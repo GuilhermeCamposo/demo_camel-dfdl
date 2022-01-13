@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring-2.23.3.xsd">
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <restConfiguration bindingMode="off" component="servlet" host="localhost"/>
+        <rest consumes="application/xml" id="unparse" path="/unparse" produces="text/plain">
+            <post id="postUnparse" uri="/">
+                <to uri="direct:unparse"/>
+            </post>
+        </rest>
+        <rest consumes="text/plain" id="convertXML" path="/xml"
+            produces="application/xml" skipBindingOnErrorCode="false">
+            <post id="postXML" uri="/">
+                <to uri="direct:parseToXML"/>
+            </post>
+        </rest>
+        <route id="xmlRoute">
+            <from id="_from1" uri="direct:parseToXML"/>
+            <bean id="_bean2" method="parseToXML" ref="DFDLParser"/>
+            <log id="_log1" message="body: ${body}"/>
+            <setHeader headerName="Content-Type" id="_setHeader1">
+                <constant>application/xml</constant>
+            </setHeader>
+        </route>
+        <route id="unparseRoute">
+            <from id="_from2" uri="direct:unparse"/>
+            <bean id="_bean1" method="unparse" ref="DFDLUnparser"/>
+            <log id="_log2" message="body: ${body}"/>
+            <setHeader headerName="Content-Type" id="_setHeader2">
+                <constant>text/plain</constant>
+            </setHeader>
+        </route>
+    </camelContext>
+</beans>

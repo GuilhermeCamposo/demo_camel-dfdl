@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://example.com/dfdl/fixed-length/"
+	targetNamespace="http://example.com/dfdl/fixed-length/"
+	xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
+	xmlns:fn="http://www.w3.org/2005/xpath-functions"
+	xmlns:daf="urn:ogf:dfdl:2013:imp:daffodil.apache.org:2018:ext">
+
+	<xs:include schemaLocation="https://raw.githubusercontent.com/apache/daffodil/main/daffodil-lib/src/main/resources/org/apache/daffodil/xsd/DFDLGeneralFormat.dfdl.xsd" />
+
+	<xs:annotation>
+		<xs:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format ref="GeneralFormat" representation="text" encoding="utf-8"  />
+		</xs:appinfo>
+	</xs:annotation>
+
+	<xs:element name="preferredNames"  >
+		<xs:complexType>
+			<xs:sequence >
+				<xs:element name="preferredName" maxOccurs="unbounded"  >
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="title" type="xs:string"  dfdl:length="3" dfdl:lengthUnits="characters" 	dfdl:lengthKind="explicit" />
+							<xs:element name="name" type="xs:string" 	dfdl:length="10" dfdl:lengthUnits="characters" dfdl:lengthKind="explicit" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

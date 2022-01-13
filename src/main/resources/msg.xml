@@ -1,0 +1,14 @@
+<tns:preferredNames	xmlns:tns="http://example.com/dfdl/fixed-length/">
+	<preferredName>
+		<title>mr.</title>
+		<name>guilherme </name>
+	</preferredName>
+	<preferredName>
+		<title>ms.</title>
+		<name>Anne</name>
+	</preferredName>
+	<preferredName>
+		<title>ms.</title>
+		<name>Emilly </name>
+	</preferredName>
+</tns:preferredNames>
