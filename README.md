@@ -6,22 +6,22 @@ Simple demo showing how to use Apache Daffodil library with Apache Camel.
 
 To run this demo as a standalone project on your local machine:
 
-* Build the project:
+### Build the project:
 
     $ mvn clean package
-    
-* Run the service:
+
+### Run the service:
 
     $ mvn spring-boot:run
 
-## Testing 
+## Testing
 
-Sample data is provided in the src/main/resource folder
+Sample data is provided in the `src/main/resource` folder.
 
 ### Parsing
 
 	curl -d @msg.dat -H 'Content-Type: text/plain' http://localhost:8080/v1/xml
-		
+
 ### Unparsing
 
 	curl -d @msg.xml -H 'Content-Type: application/xml' http://localhost:8080/v1/unparse		

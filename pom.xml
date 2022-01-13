@@ -7,7 +7,7 @@
 	<groupId>demo.integration</groupId>
 	<artifactId>camel-dfdl-demo</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>Camel  DFDL Demo</name>
+	<name>Camel DFDL Demo</name>
 
 	<properties>
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
